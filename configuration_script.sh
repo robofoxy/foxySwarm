@@ -1,4 +1,3 @@
-#!/bin/bash
 YELLOW='\033[1;31;100m'
 RED='\033[1;31m'
 NC='\033[0m' # No Color
