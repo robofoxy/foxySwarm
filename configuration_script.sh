@@ -20,11 +20,11 @@ read ip
 echo ""
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
-echo "Configuring ~/.bashrc ..."
-echo "" | sudo tee --append ~/.bashrc
-echo "#FOXY_SWARM_CONFIGURATION" | sudo tee --append ~/.bashrc
-echo "export ROS_MASTER_URI=http://$ip:11311" | sudo tee --append ~/.bashrc
-echo "export ROS_HOSTNAME=$ip" | sudo tee --append ~/.bashrc
+echo "Configuring ~/.zshrc ..."
+echo "" | sudo tee --append ~/.zshrc
+echo "#FOXY_SWARM_CONFIGURATION" | sudo tee --append ~/.zshrc
+echo "export ROS_MASTER_URI=http://$ip:11311" | sudo tee --append ~/.zshrc
+echo "export ROS_HOSTNAME=$ip" | sudo tee --append ~/.zshrc
 echo "DONE."
 echo ""
 echo "Configuring /etc/network/interfaces..."
@@ -40,7 +40,7 @@ echo ""
 sudo echo "Ad-hoc network is configured with SSID foxyAdHoc."
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
-sudo apt-get install ros-kinetic-multimaster-fkie
+sudo apt-get install ros-melodic-multimaster-fkie
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
 printf "foxy_swarm configurations are completed.\n"

@@ -1,8 +1,12 @@
-echo "Running....."
+echo "Running roscore..."
 roscore >/dev/null 2>&1 &
+sleep 15
+echo "Running discovery..."
 rosrun master_discovery_fkie master_discovery >/dev/null 2>&1 &
-rosrun master_sync_fkie master_sync >/dev/null 2>&1 &
-sleep 5
+sleep 15
+echo "Running sync..."
+rosrun master_sync_fkie master_sync >/dev/null 2>&1
+sleep 15
 echo ""
 echo "Available ROS topics:"
 rostopic list
