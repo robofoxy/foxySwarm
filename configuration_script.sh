@@ -22,13 +22,13 @@ echo ""
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
 echo "Configuring /etc/network/interfaces..."
-echo "auto $interface_name" >> /etc/network/interfaces
-echo "iface $interface_name inet static" >> /etc/network/interfaces
-echo "    address $ip" >> /etc/network/interfaces
-echo "    netmask 255.255.255.0" >> /etc/network/interfaces
-echo "    wireless-channel 1" >> /etc/network/interfaces
-echo "    wireless-essid foxyAdHoc" >> /etc/network/interfaces
-echo "    wireless-mode ad-hoc" >> /etc/network/interfaces
+echo "auto $interface_name" | sudo tee --append /etc/network/interfaces
+echo "iface $interface_name inet static" | sudo tee --append /etc/network/interfaces
+echo "    address $ip" | sudo tee --append /etc/network/interfaces
+echo "    netmask 255.255.255.0" | sudo tee --append /etc/network/interfaces
+echo "    wireless-channel 1" | sudo tee --append /etc/network/interfaces
+echo "    wireless-essid foxyAdHoc" | sudo tee --append /etc/network/interfaces
+echo "    wireless-mode ad-hoc" | sudo tee --append /etc/network/interfaces
 echo ""
 sudo echo "Ad-hoc network is configured with SSID foxyAdHoc."
 printf "${RED}******************************************************************${NC}\n"
