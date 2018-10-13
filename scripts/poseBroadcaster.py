@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import rospy
+import os
 from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped
 
@@ -9,7 +10,7 @@ def talker():
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
         current_pose = PoseStamped()
-        current_pose.header.frame_id = "rasp1"
+        current_pose.header.frame_id = os.environ['ROS_HOSTNAME']
         current_pose.pose.position.x = 4.56123
         current_pose.pose.position.y = 7.98327
         current_pose.pose.position.z = 1.56445

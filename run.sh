@@ -1,12 +1,8 @@
-source ~/catkin_ws/devel/setup.bash
-echo "Running roscore..."
-roscore >/dev/null 2>&1 &
-sleep 10
 echo "Starting master_discovery..."
 rosrun master_discovery_fkie master_discovery >/dev/null 2>&1 &
 sleep 5
 echo "Starting master_sync..."
-rosrun master_sync_fkie master_sync >/dev/null 2>&1 &
+rosrun master_sync_fkie master_sync >/dev/null 2>&1
 sleep 5
 echo ""
 echo "Available ROS topics:"
