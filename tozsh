@@ -1,0 +1,2 @@
+sed -i -- 's/bash/zsh/g' *.sh
+sed -i -- 's/kinetic/melodic/g' *.sh
