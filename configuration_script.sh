@@ -33,7 +33,7 @@ echo ""
 sudo echo "Ad-hoc network is configured with SSID foxyAdHoc."
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
-sudo apt-get install ros-$ROS_DISTRO-multimaster-fkie
+sudo apt-get install ros-kinetic-multimaster-fkie
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
 printf "foxy_swarm configurations are completed.\n"
