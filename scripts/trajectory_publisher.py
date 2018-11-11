@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-import rospy
+import rospy, random, os
 from multimaster_msgs_fkie.msg import LinkStatesStamped
-from multimaster_msgs_fkie.msg import LinkState
 from foxySwarm.msg import TrajectoryPolynomialPiece
 
 links = list()
@@ -19,21 +18,22 @@ def create_fake_trj(dest):
 	msg = TrajectoryPolynomialPiece()
 	msg.destination = dest
 	for i in range(1000):
-		msg.poly_x.append(101)
-		msg.poly_y.append(102)
-		msg.poly_z.append(103)
-		msg.poly_yaw.append(0.5)
+		msg.poly_x.append(random.uniform(-4.5, 4.9))
+		msg.poly_y.append(random.uniform(-4.5, 4.9))
+		msg.poly_z.append(random.uniform(-4.5, 4.9))
+		msg.poly_yaw.append(random.uniform(-1, 1))
 		msg.duration = rospy.Duration(10, 0)
 	return msg
 	
 def RR():
-	rospy.init_node('linksSubscriber', anonymous=True)
+	rospy.init_node('trajectoryPublisher', anonymous=True)
 	rospy.Subscriber('/master_discovery/linkstats', LinkStatesStamped, links_callback)
 	trj_publisher = rospy.Publisher('trajectoryPublisher', TrajectoryPolynomialPiece, queue_size=30)
 	
 	while not rospy.is_shutdown():
 		for i in range(len(links)):
-			trj_publisher.publish(create_trj(links[i].destination))
+			if links[i].destination != os.environ['ROS_HOSTNAME']:
+				trj_publisher.publish(create_fake_trj(links[i].destination))
 		print_links()
 		rospy.sleep(0.4)
 	
