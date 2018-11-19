@@ -78,9 +78,11 @@ def RR():
 		curses.init_pair(i + 1, i, -1)
 		
 	while not rospy.is_shutdown():
-		for i in range(len(links)):
-			if links[i].destination != os.environ['ROS_HOSTNAME']:
-				trj_publisher.publish(create_fake_trj(links[i].destination))
+		if not published:
+			for i in range(len(links)):
+				if links[i].destination != os.environ['ROS_HOSTNAME']:
+					trj_publisher.publish(create_fake_trj(links[i].destination))
+					published = True
 		print_dict(scr)
 		rospy.sleep(0.4)
 	
