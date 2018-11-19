@@ -10,6 +10,8 @@ def pose_broadcaster():
     while not rospy.is_shutdown():
         current_pose = PoseStamped()
         current_pose.header.frame_id = os.environ['ROS_HOSTNAME'] #str(random.randint(0,2)) #SIM MODE
+        now = rospy.get_rostime()
+        current_pose.header.stamp = rospy.get_rostime()
         current_pose.pose.position.x = random.uniform(-4.5, 4.9)
         current_pose.pose.position.y = random.uniform(-4.5, 4.9)
         current_pose.pose.position.z = random.uniform(-4.5, 4.9)
